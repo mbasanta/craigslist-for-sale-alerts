@@ -6,7 +6,7 @@ LISTING_URLS_JSON = ""
 # Or hardcode URLS into this file
 LISTING_URLS = ["https://portland.craigslist.org/search/sss?query=super+nintendo&sort=rel&hasPic=1&postedToday=1&search_distance=15&postal=97205"]
 
-# How long we should sleep between scrapes of Craigslist.
+# How long we should sleep between scrapes of Craigslist in seconds
 SLEEP_INTERVAL = 3 * 60 # 3 minutes
 
 # Email Settings
@@ -18,10 +18,10 @@ SMTP_PASSWORD = "Your.Gmail.Password"
 # Email Recipient
 EMAIL_RECIPIENT = "Your.Gmail.Address"
 
-# The token that allows us to connect to slack.
+# The token that allows us to connect to slack
 SLACK_TOKEN = ""
 
-# Which slack channel to post the listings into.
+# Which slack channel to post the listings into
 SLACK_CHANNEL = ""
 
 # Optional Dead Man's Snitch URL used for monitoring

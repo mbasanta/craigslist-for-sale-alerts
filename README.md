@@ -7,11 +7,27 @@ It can optionally read from an external JSON list of search URLs so that search 
 
 This project is adapted from [apartment finder](https://github.com/VikParuchuri/apartment-finder) by Vik Paruchuri.
 
+Settings
+--------------------
+
+Look in `settings.py` for the list of configuration options. The options are:
+
+ * LISTING_URLS_JSON - optionally, a URL to a JSON array with the Craigslist searches you want to alert on
+ * LISTING_URLS - the harcoded Craigslist searches you want to alert on
+ * SLEEP_INTERVAL - How long we should sleep between scrapes of Craigslist in seconds
+ * SMTP_SERVER - The SMTP server to use send email alerts
+ * SMTP_PORT - The SMTP port to use send email alerts
+ * SMTP_USERNAME - The SMTP username to use send email alerts
+ * SMTP_PASSWORD - The SMTP password to use send email alerts
+ * EMAIL_RECIPIENT - The address where you want to receive email alerts
+ * SLACK_TOKEN - The token that allows us to connect to Slack
+ * SLACK_CHANNEL - the Slack channel you want the bot to post in
+
 
 Deployment
 --------------------
 
-    # copy all files
+    # copy all files to server
     scp *.py user@domain:/path/to/project/directory
     scp listings.db user@domain:/path/to/project/directory
 
@@ -39,6 +55,6 @@ Deployment
 Testing
 --------------------
 
-The `remove_listing.py` file is useful for testing your alerts and allows you to easily delete a record from your local database to make sure your alert fires as you expect. Also, it displays the most recent 15 items in your local database for debugging purposes.
+The `remove_listing.py` file is useful for testing your alerts and allows you to easily delete a record from your local database to make sure your alert fires as you expect. Also, it displays the most recent 15 items in your local database for debugging purposes. You must know the Craigslist ID to be able to delete the record.
 
 
