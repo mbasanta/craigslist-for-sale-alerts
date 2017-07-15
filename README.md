@@ -24,6 +24,7 @@ Look in `settings.py` for the list of configuration options. The options are:
  * SLACK_CHANNEL - the Slack channel you want the bot to post in
  * DMS_URL - Optional Dead Man's Snitch URL used for monitoring
 
+If using Gmail to send email alerts, some [further changes](http://stackoverflow.com/questions/10147455/trying-to-send-email-gmail-as-mail-provider-using-python/27515833#27515833) may be required.
 
 Deployment
 --------------------
