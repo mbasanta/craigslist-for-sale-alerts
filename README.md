@@ -22,6 +22,7 @@ Look in `settings.py` for the list of configuration options. The options are:
  * EMAIL_RECIPIENT - The address where you want to receive email alerts
  * SLACK_TOKEN - The token that allows us to connect to Slack
  * SLACK_CHANNEL - the Slack channel you want the bot to post in
+ * DMS_URL - Optional Dead Man's Snitch URL used for monitoring
 
 
 Deployment
