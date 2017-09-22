@@ -1,5 +1,4 @@
 sqlalchemy
 python-dateutil
-ipython
 slackclient
-beautiful-soup
+beautifulsoup4
