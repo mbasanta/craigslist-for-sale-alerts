@@ -5,7 +5,7 @@ from sqlalchemy.orm import sessionmaker
 from dateutil.parser import parse
 from util import post_listing_to_slack, send_listing_email
 from slackclient import SlackClient
-from urlparse import urlparse 
+from urlparse import urlparse
 from bs4 import BeautifulSoup
 from email.mime.text import MIMEText
 
@@ -50,7 +50,7 @@ def get_postings_from_urls():
     except Exception:
         print "Could not fetch listings from remote URL"
         pass
-    
+
     results = []
 
     for url in settings.LISTING_URLS:
@@ -65,21 +65,13 @@ def get_postings_from_urls():
             price = meta.find('span', {'class':'result-price'})
             date = link.find('time', {'class':'result-date'})
 
-            # Skip out of region postings
-            if( title['href'].startswith('//') is True or title['href'].startswith('http')):
-                continue
-
             result = {}
             result['name'] = title.text
             result['id'] = title['data-id']
 
-            # Get domain from url
-            parsed_uri = urlparse( url )
-            domain = '{uri.scheme}://{uri.netloc}/'.format(uri=parsed_uri)            
-            result['url'] = domain + title['href']
-            
+            result['url'] = title['href']
             result['datetime'] = date['datetime']
-            
+
             if price is not None:
                 result['price'] = price.text
             else:
@@ -120,7 +112,7 @@ def scrape():
                 link=result["url"],
                 created=parse(result["datetime"]),
                 name=result["name"],
-                price=price,    
+                price=price,
                 cl_id=result["id"]
             )
 
@@ -165,6 +157,6 @@ def do_scrape():
     except Exception:
         pass
 
-   
-
+if __name__ == '__main__':
+    do_scrape()
 
