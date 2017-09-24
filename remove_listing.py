@@ -5,7 +5,7 @@ from sqlalchemy.orm import sessionmaker
 from dateutil.parser import parse
 from util import post_listing_to_slack, send_listing_email
 from slackclient import SlackClient
-from urlparse import urlparse 
+from urlparse import urlparse
 from bs4 import BeautifulSoup
 from email.mime.text import MIMEText
 
@@ -18,6 +18,8 @@ import smtplib
 
 ## Put Craigslist ID of the Craigslist item to delete here
 cl_id_to_delete = 1234567890
+if len(sys.argv) > 0:
+    cl_id_to_delete = sys.argv[1]
 
 engine = create_engine('sqlite:///listings.db', echo=False)
 Base = declarative_base()
