@@ -29,13 +29,13 @@ def send_listing_email(mail, listing):
     message += "%s \n\n" % (listing["url"])
 
     msg = MIMEText(message)
-    msg['Subject'] = listing["name"]    
+    msg['Subject'] = listing["name"]
     msg['From'] = email_from
 
-    email_primary = settings.EMAIL_RECIPIENT
-    msg['To'] = email_primary
-    mail.sendmail(email_from, email_primary, msg.as_string())
+    emails = settings.EMAIL_RECIPIENTS
+    msg['To'] = emails[0]
+    mail.sendmail(email_from, emails, msg.as_string())
 
 
-    
+
 

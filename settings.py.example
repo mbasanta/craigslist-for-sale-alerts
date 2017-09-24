@@ -16,7 +16,7 @@ SMTP_USERNAME = "Your.Gmail.Address"
 SMTP_PASSWORD = "Your.Gmail.Password"
 
 # Email Recipient
-EMAIL_RECIPIENT = "Your.Gmail.Address"
+EMAIL_RECIPIENTS = ["Your.Gmail.Address"]
 
 # The token that allows us to connect to slack
 SLACK_TOKEN = ""

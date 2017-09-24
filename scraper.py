@@ -44,13 +44,6 @@ def get_postings_from_urls():
     Scrapes Craigslist for a certain geographic area, and finds the latest listings.
     :return: A list of actually new results.
     """
-    try:
-        r = requests.get(settings.LISTING_URLS_JSON)
-        settings.LISTING_URLS = json.loads(r.text)
-    except Exception:
-        print "Could not fetch listings from remote URL"
-        pass
-
     results = []
 
     for url in settings.LISTING_URLS:
@@ -136,6 +129,15 @@ def do_scrape():
     mail.ehlo()
     mail.starttls()
     mail.login(settings.SMTP_USERNAME, settings.SMTP_PASSWORD)
+
+    try:
+        r = requests.get(settings.LISTING_URLS_JSON)
+        json_data = json.loads(r.text)
+        settings.LISTING_URLS = json_data['listing_urls']
+        settings.EMAILS = json_data['emails']
+    except Exception:
+        print "Could not fetch listings from remote URL"
+        pass
 
     # Get all the results from craigslist.
     all_results = scrape();
